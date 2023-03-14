@@ -1,0 +1,119 @@
+{% extends 'dashboard/base.html' %}
+{% block title %}| African Elephant{% endblock %}
+
+{% block content %}
+
+<!-- masthead -->
+<header class="masthead"
+    style="background-image: url('../../../static/dashboard/index/assets/img/African_elephant.jpg')">
+</header>
+
+<!-- 可视化查询部分 -->
+<div class="container-fluid bg-light">
+    <!-- 查询特定轨迹 -->
+    <div class="container-fluid mt-3" id="special">
+        <div class="text-center">
+            <h2>查询特定轨迹</h2>
+            <p class="lead">请选择你需要查询的对象</p>
+        </div>
+
+        <form action="{% url 'special_query' %}" method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            <div class="row justify-content-center">
+                <div class="col-lg-4 pb-5">
+                    <label for="sel1" class="form-label">Select list (select one):</label>
+                    <select class="form-select" id="sel1" name="sellist">
+                        <option>-请选择-</option>
+                        {% for i,color in color_dist.items %}
+                        <option>{{i}}:{{color}}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+
+                <div class="col-lg-2 mt-lg-4 pt-lg-2">
+                    <button type="submit" class="btn btn-primary " style="padding: 6px;">submit</button>
+                </div>
+            </div>
+        </form>
+
+    </div>
+
+    <!-- 轨迹数据可视化（展示所有轨迹） -->
+    <div class="container-fluid bg-light" id="all">
+        <div class="text-center">
+            <h2>展示所有轨迹信息</h2>
+        </div>
+        <div class="row justify-content-center">
+            <div class="col-lg-11">
+                {{ map|safe }}
+            </div>
+        </div>
+    </div>
+
+    <!-- 相似轨迹查询 -->
+    <div class="container-fluid mt-3" id="special">
+        <div class="text-center">
+            <h2>查询相似轨迹</h2>
+            <p class="lead">打造你自己的查询方式</p>
+        </div>
+
+        <form action="{% url 'similar_query' %}" method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            <div class="row justify-content-center pb-2">
+                <div class="col-lg-2">
+                    <label for="sel1" class="form-label">选择查询对象:</label>
+                    <select class="form-select" id="sel1" name="sellist">
+                        <option>-请选择-</option>
+                        {% for i,color in color_dist.items %}
+                        <option>{{i}}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+                <div class="col-lg-2">
+                    <label for="sel2" class="form-label">选择查询方式:</label>
+                    <select class="form-select" id="sel2" name="way">
+                        <option>-请选择-</option>
+                        <option value="1">范围查询</option>
+                        <option value="2">KNN查询</option>
+                    </select>
+                </div>
+                <div class="col-lg-2">
+                    <label for="sel3" class="form-label">选择查询模式:</label>
+                    <select class="form-select" id="sel3" name="method">
+                        <option>-请选择-</option>
+                        <option>MEDP</option>
+                        <option>MEDT</option>
+                    </select>
+                </div>
+                <div class="col-lg-2">
+                    <label for="offset" class="form-label">请输入k/offset:</label>
+                    <input class="input-form" type="text" name="offset" id="offset" />
+                </div>
+            </div>
+
+            <div class="row justify-content-center pb-5">
+                <div class="col-lg-1">
+                    <button type="submit" class="btn btn-primary" style="padding: 15px;">submit</button>
+                </div>
+            </div>
+        </form>
+
+    </div>
+
+    <!-- 热力图展示 -->
+    <div class="text-center">
+        <h2>轨迹信息的热力图展示</h2>
+    </div>
+    <div class="container-fluid bg-light" id="all">
+        <div class="row justify-content-center">
+            <div class="col-lg-11 pb-5">
+                {{ heatmap|safe }}
+            </div>
+        </div>
+    </div>
+
+</div>
+
+
+
+{% endblock %}

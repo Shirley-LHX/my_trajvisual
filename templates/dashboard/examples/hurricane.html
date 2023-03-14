@@ -1,0 +1,152 @@
+{% extends 'dashboard/base.html' %}
+{% block title %}| Hurricane{% endblock %}
+
+{% block content %}
+<header class="masthead" style="background-image: url('../../../static/dashboard/index/assets/img/hurricane.jpg');">
+    <div class="container px-4 px-lg-5 d-flex h-100 align-items-center justify-content-center">
+        <div class="d-flex justify-content-center">
+            <div class="text-center">
+                <h1 style="background: linear-gradient(#212529, rgb(255 255 255 / 0%));
+                -webkit-background-clip: text;">飓风</h1>
+            </div>
+        </div>
+    </div>
+</header>
+
+<!-- 侧边栏显示 -->
+<div class="offcanvas offcanvas-start" data-bs-scroll="true" data-bs-backdrop="false" tabindex="-1"
+    id="offcanvasScrolling" aria-labelledby="offcanvasScrollingLabel">
+    <div class=" offcanvas-header" style="background-color: rgb(52, 50, 50);">
+        <h5 class="offcanvas-title" id="offcanvasScrollingLabel" style="color: white;">轨迹数据处理功能</h5>
+        <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+    </div>
+    <div class="offcanvas-body">
+        <ul class="nav flex-column">
+            <li class="nav-item">
+                <a class="nav-link active" href="#generalize">数据压缩</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#filter">数据过滤</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#split">数据分段</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#query">数据查询</a>
+            </li>
+        </ul>
+    </div>
+</div>
+
+<select class="form-select" aria-label="Default select example">
+    <option selected>Open this select menu</option>
+    <option value="1">One</option>
+    <option value="2">Two</option>
+    <option value="3">Three</option>
+</select>
+
+<table class="table table-hover">
+    <thead>
+        <tr>
+            <th>Firstname</th>
+            <th>Lastname</th>
+            <th>Email</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>John</td>
+            <td>Doe</td>
+            <td>john@example.com</td>
+        </tr>
+        <tr>
+            <td>Mary</td>
+            <td>Moe</td>
+            <td>mary@example.com</td>
+        </tr>
+        <tr>
+            <td>July</td>
+            <td>Dooley</td>
+            <td>july@example.com</td>
+        </tr>
+    </tbody>
+</table>
+
+<div class="btn-group-vertical">
+    <button type="button" class="btn btn-primary">Apple</button>
+    <button type="button" class="btn btn-primary">Samsung</button>
+    <div class="btn-group">
+        <button type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown">Sony</button>
+        <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="#">Tablet</a></li>
+            <li><a class="dropdown-item" href="#">Smartphone</a></li>
+        </ul>
+    </div>
+</div>
+
+<div class="spinner-border"></div>
+
+<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#myModal">
+    打开模态框
+</button>
+
+
+<!-- 模态框 -->
+<div class="modal" id="myModal">
+    <div class="modal-dialog">
+        <div class="modal-content">
+
+            <!-- 模态框头部 -->
+            <div class="modal-header">
+                <h4 class="modal-title">模态框标题</h4>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+
+            <!-- 模态框内容 -->
+            <div class="modal-body">
+                模态框内容..
+            </div>
+
+            <!-- 模态框底部 -->
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger" data-bs-dismiss="modal">关闭</button>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<form>
+    <div class="mb-3 mt-3">
+        <label for="email" class="form-label">Email:</label>
+        <input type="email" class="form-control" id="email" placeholder="Enter email" name="email">
+    </div>
+    <div class="mb-3">
+        <label for="pwd" class="form-label">Password:</label>
+        <input type="password" class="form-control" id="pwd" placeholder="Enter password" name="pswd">
+    </div>
+    <div class="form-check mb-3">
+        <label class="form-check-label">
+            <input class="form-check-input" type="checkbox" name="remember"> Remember me
+        </label>
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+
+
+<div class="form-floating">
+    <select class="form-select" id="sel1" name="sellist">
+        <option>1</option>
+        <option>2</option>
+        <option>3</option>
+        <option>4</option>
+    </select>
+    <label for="sel1" class="form-label">Select list (select one):</label>
+</div>
+
+
+<div class="input-group mb-3">
+    <input type="file" class="form-control" id="inputGroupFile02">
+    <label class="input-group-text" for="inputGroupFile02">Upload</label>
+</div>
+{% endblock %}

@@ -1,0 +1,20 @@
+{% extends 'dashboard/base.html' %}
+{% block title %}| Store{% endblock %}
+
+
+{% block content %}
+
+<div class="container-lg pt-5 pb-4">
+    <div class="text-center">
+        <h2>{{ message }}</h2>
+    </div>
+    <div class="row justify-content-center my-5">
+        <div class="col-lg-2">
+            <a class="btn btn-primary" href="{% url 'Home' %}">返回首页</a>
+        </div>
+    </div>
+</div>
+
+
+
+{% endblock %}

@@ -1,0 +1,16 @@
+{% extends 'dashboard/base.html' %}
+{% block title %}| 查询轨迹{% endblock %}
+
+
+{% block content %}
+
+<!-- 轨迹数据可视化（展示所有轨迹） -->
+<div class="container-fluid bg-light" id="all">
+    <div class="row justify-content-center">
+        <div class="col-lg-11">
+            {{ map|safe }}
+        </div>
+    </div>
+</div>
+
+{% endblock %}
